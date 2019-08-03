@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const usedTokens = require('./used.js');
+const usedTokens = require('../schemas/used.js');
 const roles = require('./roles-model.js');
 
 
@@ -40,11 +40,6 @@ users.pre('save', function (next) {
     .catch(console.error);
 });
 
-const capabilities = {
-  admin: ['create', 'read', 'update', 'delete'],
-  editor: ['create', 'read', 'update'],
-  user: ['read'],
-};
 
 
 users.statics.createFromOauth = function (email) {
@@ -86,18 +81,10 @@ users.statics.authenticateToken = async function (token) {
 
 };
 
-// users.methods.can = function (capability) {
-//   console.log('capability', capability);
-//   roles.find({}, function (err, roles) {
-//     console.log('roles', roles);
-//   });
-//   return true;
-// };
-
-users.methods.can = function(capability) {
-  return capabilities[this.role].includes(capability);
+users.methods.can = function (capability) {
+  console.log('user has the following permissions', this.acl.capabilities);
+  return this.acl.capabilities.includes(capability);
 };
-
 
 users.methods.comparePassword = function (password) {
   return bcrypt.compare(password, this.password)
@@ -124,7 +111,4 @@ users.methods.generateKey = function () {
   return this.generateToken('key');
 };
 
-
 module.exports = mongoose.model('users', users);
-
-

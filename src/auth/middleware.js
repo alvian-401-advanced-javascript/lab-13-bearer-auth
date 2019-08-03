@@ -1,6 +1,6 @@
 'use strict';
 
-const User = require('./users-model.js');
+const User = require('./schemas/users-model.js');
 
 module.exports = (capability) => {
 
@@ -41,7 +41,6 @@ module.exports = (capability) => {
     }
 
     function _authenticate(user) {
-      console.log('can user', user.can(capability));
       if (user && (!capability || (user.can(capability)))) {
         req.user = user;
         req.token = user.generateToken();
