@@ -19,9 +19,6 @@ router.get('/danger', auth('create', 'update'), (req, res) => {
 });
 
 router.get('/public-stuff', (req,res,next) => {
-  let [authType, authString] = req.headers.authorization.split(/\s+/);
-  let usedToken = new usedTokens({ usedToken: authString });
-  usedToken.save();
 
   res.status(200).send('public stuff');
 });
