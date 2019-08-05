@@ -10,6 +10,7 @@ require('./roles-model.js');
 /**
  * exports Users Table
  */
+
 const users = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
@@ -70,7 +71,7 @@ users.statics.createFromOauth = function (email) {
  *
  */
 users.statics.authenticateBasic = function (auth) {
-  
+
   let query = { username: auth.username };
   return this.findOne(query)
     .then(user => user && user.comparePassword(auth.password))
@@ -87,7 +88,7 @@ users.statics.authenticateBasic = function (auth) {
  * @returns validated user
  */
 users.statics.authenticateToken = async function (token) {
-  
+
   const tokenIsUsed = await usedTokens.countDocuments({ usedToken: token }, function (err, count) {
     if (err) { throw err; }
   });
@@ -126,6 +127,7 @@ users.methods.comparePassword = function (password) {
  *
  * @returns new token
  */
+
 users.methods.generateToken = function () {
 
   let token = {

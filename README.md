@@ -4,8 +4,8 @@
 ### Author: Alvian Joseph
 
 ### Links and Resources
-* [PR]()
-* [![Build Status]()](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-11-authentication)
+* [PR](https://github.com/alvian-401-advanced-javascript/lab-13-bearer-auth/pulls?q=is%3Apr+is%3Aclosed)
+* [![Build Status](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-13-bearer-auth.svg?branch=master)](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-13-bearer-auth)
 * [front end]()
 
 #### Documentation

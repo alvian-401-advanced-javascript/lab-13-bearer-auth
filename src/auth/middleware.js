@@ -7,6 +7,7 @@ const User = require('./schemas/users-model.js');
  * @param {*} capability
  * @returns a function
  */
+
 module.exports = (capability) => {
 
   return (req, res, next) => {
