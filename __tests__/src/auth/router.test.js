@@ -1,6 +1,6 @@
 'use strict';
 
-process.env.SECRET='test';
+process.env.SECRET='supersecret';
 
 const jwt = require('jsonwebtoken');
 
@@ -14,6 +14,8 @@ let users = {
   editor: {username: 'editor', password: 'password', role: 'editor'},
   user: {username: 'user', password: 'password', role: 'user'},
 };
+
+
 
 beforeAll(supergoose.startDB);
 afterAll(supergoose.stopDB);

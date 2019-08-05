@@ -3,11 +3,11 @@
 const express = require('express');
 const authRouter = express.Router();
 
-const Role = require('./roles-model.js');
-const User = require('./users-model.js');
-const usedTokens = require('./used.js');
-const auth = require('./middleware.js');
-// const oauth = require('./oauth/google.js');
+const Role = require('../auth/schemas/roles-model.js');
+const User = require('../auth/schemas/users-model.js');
+const usedTokens = require('../auth/schemas/used.js');
+const auth = require('../auth/middleware.js');
+const oauth = require('../oauth/google.js');
 
 authRouter.post('/signup', (req, res, next) => {
   let user = new User(req.body);

@@ -1,15 +1,15 @@
 
-## Lab 11: Authentication
+## Lab 13: Bearer Authentication
 
 ### Author: Alvian Joseph
 
 ### Links and Resources
-* [PR](https://github.com/alvian-401-advanced-javascript/lab-11-authentication/pull/2)
-* [![Build Status](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-11-authentication.svg?branch=master)](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-11-authentication)
-* [front end](https://alvian-lab11.herokuapp.com/)
+* [PR]()
+* [![Build Status]()](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-11-authentication)
+* [front end]()
 
 #### Documentation
-* [jsdoc](https://alvian-lab11.herokuapp.com/docs)
+* [jsdoc]()
 
 ### Modules
 

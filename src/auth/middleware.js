@@ -1,7 +1,12 @@
 'use strict';
 
-const User = require('./users-model.js');
-
+const User = require('./schemas/users-model.js');
+/**
+ *determins which auth method to run depending
+ *on the case
+ * @param {*} capability
+ * @returns a function
+ */
 module.exports = (capability) => {
 
   return (req, res, next) => {
@@ -21,8 +26,14 @@ module.exports = (capability) => {
       next(e);
     }
 
-
+    /**
+     *
+     *
+     * @param {*} str
+     * @returns
+     */
     function _authBasic(str) {
+
       // str: am9objpqb2hubnk=
       let base64Buffer = Buffer.from(str, 'base64'); // <Buffer 01 02 ...>
       let bufferString = base64Buffer.toString();    // john:mysecret
@@ -41,13 +52,12 @@ module.exports = (capability) => {
     }
 
     function _authenticate(user) {
-      console.log('can user', user.can(capability));
       if (user && (!capability || (user.can(capability)))) {
         req.user = user;
         req.token = user.generateToken();
         next();
       }
-      else if(user.can(capability) === false) {
+      else if (user.can(capability) === false) {
         next('you do not have the proper permissions');
       }
       else {
