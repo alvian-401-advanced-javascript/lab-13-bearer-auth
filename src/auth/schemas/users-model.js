@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const usedTokens = require('../schemas/used.js');
-const roles = require('./roles-model.js');
+require('./roles-model.js');
 
 
+/**
+ * exports Users Table
+ */
 
 const users = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
@@ -42,6 +45,13 @@ users.pre('save', function (next) {
 
 
 
+/**
+ *
+ *
+ * @param {*} email
+ * @returns
+ */
+
 users.statics.createFromOauth = function (email) {
 
   if (!email) { return Promise.reject('Validation Error'); }
@@ -60,14 +70,31 @@ users.statics.createFromOauth = function (email) {
     });
 
 };
-
+/**
+ * Basic authentication
+ *Takes in hashed username & password
+ *searches database for match
+ * @param {*} auth
+ * @returns an authenticated user or throws error
+ *
+ */
 users.statics.authenticateBasic = function (auth) {
+
   let query = { username: auth.username };
   return this.findOne(query)
     .then(user => user && user.comparePassword(auth.password))
     .catch(error => { throw error; });
 };
 
+/**
+ *Token auth
+ *First checks db to see if token has been used
+ *If token has been used, promise rejected
+ *if token is new, it is parsed and checked
+ *against user data to check if valid
+ * @param {*} token
+ * @returns validated user
+ */
 users.statics.authenticateToken = async function (token) {
 
   const tokenIsUsed = await usedTokens.countDocuments({ usedToken: token }, function (err, count) {
@@ -80,16 +107,34 @@ users.statics.authenticateToken = async function (token) {
   return this.findOne(query);
 
 };
-
+/**
+ *checks user permissions and returns
+ *a boolean indicating if they have the proper
+ *permissions
+ * @param {*} capability
+ * @returns boolean
+ */
 users.methods.can = function (capability) {
+  
   console.log('user has the following permissions', this.acl.capabilities);
   return this.acl.capabilities.includes(capability);
 };
-
+/**
+ *compares inputed password to
+ *stored user password
+ * @param {*} password
+ * @returns
+ */
 users.methods.comparePassword = function (password) {
+  
   return bcrypt.compare(password, this.password)
     .then(valid => valid ? this : null);
 };
+/**
+ *
+ *
+ * @returns new token
+ */
 
 users.methods.generateToken = function () {
 

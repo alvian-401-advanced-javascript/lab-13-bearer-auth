@@ -1,6 +1,7 @@
 'use strict';
 
 // 3rd Party Resources
+const cwd = process.cwd();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -21,6 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 // Routes
+app.use('/', express.static(`${cwd}/docs`));
+app.use('/docs', express.static(`${cwd}/docs`));
 app.use(authRouter);
 app.use(newroutes);
 

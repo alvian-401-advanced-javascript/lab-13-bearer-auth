@@ -1,4 +1,6 @@
 'use strict';
+/**
+ * exports Roles table
 
 const mongoose = require('mongoose');
 

@@ -1,5 +1,5 @@
 
-## Lab 11: Authentication
+## Lab 13: Bearer Authentication
 
 ### Author: Alvian Joseph
 
