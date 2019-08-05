@@ -4,12 +4,12 @@
 ### Author: Alvian Joseph
 
 ### Links and Resources
-* [PR](https://github.com/alvian-401-advanced-javascript/lab-13-bearer-auth/pulls?q=is%3Apr+is%3Aclosed)
+* [PR](https://github.com/alvian-401-advanced-javascript/lab-13-bearer-auth/pull/2/)
 * [![Build Status](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-13-bearer-auth.svg?branch=master)](https://www.travis-ci.com/alvian-401-advanced-javascript/lab-13-bearer-auth)
-* [front end]()
+* [front end](https://alvian-13-14.herokuapp.com/)
 
 #### Documentation
-* [jsdoc]()
+* [jsdoc](https://alvian-13-14.herokuapp.com/docs)
 
 ### Modules
 
