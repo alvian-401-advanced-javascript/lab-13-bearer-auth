@@ -1,7 +1,7 @@
 'use strict';
 /**
  * exports Roles table
- */
+
 const mongoose = require('mongoose');
 
 const rolesSchema = new mongoose.Schema({

@@ -3,6 +3,7 @@
  * exports Used Tokens table
  * tokens expire after a set time
  */
+
 const mongoose = require('mongoose');
 
 const usedTokens = new mongoose.Schema({
